@@ -1,0 +1,104 @@
+.p-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgb(126, 106, 106);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-controls {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-controls label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-controls input {
+    padding: 0.5rem;
+    height: auto;
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border 0.3s;
+  }
+  
+  .form-controls input:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  input#weight {
+    z-index: 1;
+    position: relative;
+  }
+  input#expirationDate{
+    z-index: 1;
+    position: relative;
+  }
+
+
+  /* cool knappppppppppp */
+  .add-products-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #ffffff40;
+    box-shadow: 0 0 0 2px #ffffff20;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .add-products-button span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #2196F3;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .add-products-button span:first-child {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .add-products-button:hover {
+    box-shadow: 0 0 0 5px #0b0c0c60;
+    color: #ffffff;
+  }
+  
+  .add-products-button:active {
+    scale: 0.95;
+  }
+  
+  .add-products-button:hover span:last-child {
+    width: 150px;
+    height: 150px;
+    opacity: 1;
+  }

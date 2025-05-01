@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./addProduct.js"></script>
+    <link rel="stylesheet" href="add-products.css">
+    <script src="../../lib/helpers/scripts.js"></script>
+    <title>Products</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"> <a href="../../index.html">Nataniels Bageri</a></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a class="active" href="../products/products.html">Produkter</a></li>
+                    <li><a href="./pages/suppliers/suppliers.html">Våra leverantörer</a></li>
+                    <li><a href="./pages/customers/customers.html">Kunder</a></li>
+                    <li><a href="./pages/#">Kontakta oss</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="p-background"></div>
+        <div class="main-page"></div>
+
+        <div class="p-container">
+            <article>
+                <form id="post-form">
+                    <div class="form-controls">
+                        <label for="articleName">Produkt Namn</label>
+                        <input type="text" name="articleName" id="articleName" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="bestBeforeDate">Bäst före datum</label>
+                        <input type="date" name="bestBeforeDate" id="bestBeforeDate" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="expirationDate">Utgångsdatum</label>
+                        <input type="date" name="expirationDate" id="expirationDate" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="packageAmount">Antal paket</label>
+                        <input type="number" name="packageAmount" id="packageAmount" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="pricePerKg">Kg pris</label>
+                        <input type="number" name="pricePerKg" id="pricePerKg" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="quantityPerPackage">Antal per paket</label>
+                        <input type="number" name="quantityPerPackage" id="quantityPerPackage" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="weight">Totalvikt (KG)</label>
+                        <input type="number" name="weight" id="weight" />
+                    </div>
+                    <div class="form-controls">
+                        <button type="submit" class="add-products-button">Lägg till</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>

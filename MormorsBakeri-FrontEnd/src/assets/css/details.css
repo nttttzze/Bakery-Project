@@ -1,0 +1,41 @@
+/* .p-background{
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: url(../../assets/images/ales-krivec-QnNqGoCnBg0-unsplash.jpg) no-repeat center/cover;
+    z-index: -1;
+} */
+
+
+body {
+    background-color: rgb(106, 102, 102);
+    background: linear-gradient(
+    to right,
+    #3f443d,
+    #3f4157,
+    #2f334b,
+    #151a35,
+    #0f1429
+  );
+
+}
+
+.center{
+    display: grid;
+    place-items: center;
+    justify-content:center;
+    background-color: rgb(42, 42, 47);
+    
+    margin: auto;
+    width: 62rem;
+    height: 50rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.prod{
+    
+    background-color: rgb(109, 127, 142);
+} 

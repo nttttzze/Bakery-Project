@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./addSupplier.js"></script>
+    <link rel="stylesheet" href="add-supplier.css">
+    <script src="../../lib/helpers/scripts.js"></script>
+    <title>Products</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"> <a href="../../index.html">Nataniels Bageri</a></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="../products/products.html">Produkter</a></li>
+                    <li><a class="active" href="../suppliers/suppliers.html">Våra leverantörer</a></li>
+                    <li><a href="../customers/customers.html">Kunder</a></li>
+                    <li><a href="./pages/#">Kontakta oss</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="p-background"></div>
+        <div class="main-page"></div>
+
+        <div class="p-container">
+            <article>
+                <form id="post-form">
+                    <div class="form-controls">
+                        <label for="name">Leverantörens namn</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="address">Adress</label>
+                        <input type="text" name="address" id="address" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="contactPerson">Kontaktperson</label>
+                        <input type="text" name="contactPerson" id="contactPerson" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="phone">Nummer</label>
+                        <input type="number" name="phone" id="phone" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+                    <div class="form-controls">
+                        <button type="submit" class="add-products-button">Lägg till</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "articleName": "Mjöl",
+        "bestBeforeDate": "2025-04-05",
+        "expirationDate": "2026-08-15",
+        "packageAmount": 15,
+        "pricePerKg": 25.99,
+        "quantityPerPackage": 4,
+        "weight": 1.5
+
+    },
+    {
+        "id": 2,
+        "articleName": "Socker",
+        "bestBeforeDate": "2026-04-05",
+        "expirationDate": "2028-08-15",
+        "packageAmount": 10,
+        "pricePerKg": 15.99,
+        "quantityPerPackage": 5,
+        "weight": 0.5
+    },
+    {
+        "id": 3,
+        "articleName": "Kakao",
+        "bestBeforeDate": "2026-01-05",
+        "expirationDate": "2028-10-15",
+        "packageAmount": 20,
+        "pricePerKg": 19.99,
+        "quantityPerPackage": 5,
+        "weight": 2.0
+        
+    },
+    {
+        "id": 4,
+        "articleName": "Vete",
+        "bestBeforeDate": "2025-12-05",
+        "expirationDate": "2026-06-15",
+        "packageAmount": 20,
+        "pricePerKg": 10.99,
+        "quantityPerPackage": 8,
+        "weight": 2.5
+    }
+]

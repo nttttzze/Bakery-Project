@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./suppliers.js"></script>
+    <link rel="stylesheet" href="suppliers.css">
+    <script src="../../lib/helpers/scripts.js"></script>
+
+    <title>Suppliers</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"> <a href="../../index.html">Nataniels Bageri</a></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a  href="../products/products.html">Produkter</a></li>
+                    <li><a class="active" href="./suppliers.html">Våra leverantörer</a></li>
+                    <li><a href="../customers/customers.html">Kunder</a></li>
+                    <li><a href="./pages/#">Kontakta oss</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="p-background"></div>
+        <div class="main-page"></div>
+
+        <div id="suppliers" class="grid">
+            <!--Kunder -->
+        </div>
+        <form action="../addSupplier/add-supplier.html">
+            <div class="add-button">
+                <button id="add-product-button" href="">Lägg till en Leverantör 
+                </button>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+.card {
+    background: #9dc0bc;
+    /* padding: 0.4rem; */
+    transition: transform 0.2s;
+    border-radius: 10px;
+ 
+
+  }
+  .card-body {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border: solid rgb(0, 0, 0) 2px;
+  }
+  .card:hover {
+    transform: scale(1.03);
+    background: #00897b;
+  }
+  
+
+  .add-button{
+    text-align: center;
+    margin-top: 2rem;
+    z-index: 10;
+    position: relative;
+
+  }
+  #add-product-button{
+    padding: 12px 20px;
+    font-size: 16px ;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 35px;
+
+
+  }
+  #add-product-button:hover {
+    background-color: #45a049;
+  }
