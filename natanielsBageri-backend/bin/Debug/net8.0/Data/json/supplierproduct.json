@@ -1,0 +1,31 @@
+[
+    {
+        "supplierId": 1,
+        "productId": 1,
+        "pricePerKg": 25.99
+    },{
+        "supplierId": 1,
+        "productId": 2,
+        "pricePerKg": 15.99
+    },{
+        "supplierId": 2,
+        "productId": 1,
+        "pricePerKg": 22.99
+    },{
+        "supplierId": 2,
+        "productId": 2,
+        "pricePerKg": 15.99
+    },{
+        "supplierId": 3,
+        "productId": 3,
+        "pricePerKg": 19.99
+    },{
+        "supplierId": 3,
+        "productId": 1,
+        "pricePerKg": 27.95
+    },{
+        "supplierId": 3,
+        "productId": 4,
+        "pricePerKg": 10.99
+    }
+]
