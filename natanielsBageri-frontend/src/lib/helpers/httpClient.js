@@ -43,4 +43,29 @@ export const post = async (endpoint, data) => {
   }
 };
 
+export const patch = async (endpoint, data) => {
+  const url = `${config.apiUrl}/${endpoint}`;
+
+  try {
+    const urlResponse = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (urlResponse.ok) {
+      return await urlResponse.json();
+    } else {
+      throw new Error(
+        `PATCH misslyckades: ${urlResponse.status}, ${urlResponse.statusText}`
+      );
+    }
+  } catch (error) {
+    console.error("Fel vid patch", error);
+    return null;
+  }
+};
+
 

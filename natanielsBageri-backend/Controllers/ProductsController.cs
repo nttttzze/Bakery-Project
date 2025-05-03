@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mormorsBageri.Entitites;
 using mormorsBageri.Entities;
+using mormorsBageri.DTOs;
 
 
 namespace mormorsBageri.Controllers;
@@ -85,7 +86,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public async Task<ActionResult> UpdateProductPrice(int id, [FromQuery] decimal pricePerKg)
+    public async Task<ActionResult> UpdateProductPrice(int id, [FromBody] UpdatePriceDto dto)
     {
         var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
@@ -94,7 +95,7 @@ public class ProductsController : ControllerBase
             return NotFound(new { success = false, message = $"Produkten med ID {id} finns ej. " });
         }
 
-        product.PricePerKg = pricePerKg;
+        product.PricePerKg = dto.PricePerKg;
 
         await _context.SaveChangesAsync();
 

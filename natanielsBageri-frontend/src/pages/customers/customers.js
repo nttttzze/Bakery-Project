@@ -26,9 +26,7 @@ const createHtml = (customer) => {
     <p> Kontaktperson: ${customer.contactPerson}</p>
         <p> Leveransadress: ${customer.deliveryAddress}</p>
             <p class="p-price"> Fakturaadress: ${customer.invoiceAddress}</p>
-
-    
-
+    <p>Kund Id: ${customer.id}</p>
     </div>
     
     </section>`;

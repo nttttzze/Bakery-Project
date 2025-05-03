@@ -72,16 +72,17 @@ public class SupplierController : ControllerBase
     [HttpGet()]
     public async Task<ActionResult> ListAllSuppliers()
     {
-        var p = await _context.Suppliers
-        .Select(p => new{
-            p.Name,
-            p.Address,
-            p.Phone,
-            p.Email
+        var s = await _context.Suppliers
+        .Select(s => new{
+            s.Id,
+            s.Name,
+            s.Address,
+            s.Phone,
+            s.Email
         }
         )
         .ToListAsync();
-        return Ok(new{ success = true, p});
+        return Ok(new{ success = true, s});
     }
 
     
