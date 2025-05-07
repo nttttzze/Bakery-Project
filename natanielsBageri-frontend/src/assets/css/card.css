@@ -22,9 +22,11 @@
     margin-top: 2rem;
     z-index: 10;
     position: relative;
+    display: flex;
+    justify-content: center;
 
   }
-  #add-product-button{
+  .add-product-button{
     padding: 12px 20px;
     font-size: 16px ;
     background-color: #4CAF50;
@@ -33,9 +35,22 @@
     border-radius: 6px;
     cursor: pointer;
     margin-top: 35px;
-
+    margin: 2rem;
 
   }
-  #add-product-button:hover {
+  .add-product-button:hover {
     background-color: #45a049;
+  }
+
+  @media screen and (max-width: 600px) {
+    
+    .add-button {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .add-product-button {
+      width: 80%;
+      margin: 1rem 0;
+    }
   }

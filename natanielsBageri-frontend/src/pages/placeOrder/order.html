@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./addSupplier.js"></script>
-    <link rel="stylesheet" href="add-supplier.css">
+    <script type="module" src="./order.js"></script>
+    <link rel="stylesheet" href="./order.css">
     <script src="../../lib/helpers/scripts.js"></script>
     <title>Products</title>
 </head>
@@ -17,8 +17,8 @@
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
                 <ul id="nav-links">
-                    <li><a href="../products/products.html">Produkter</a></li>
-                    <li><a class="active" href="../suppliers/suppliers.html">Våra leverantörer</a></li>
+                    <li><a class="active" href="../products/products.html">Produkter</a></li>
+                    <li><a href="../suppliers/suppliers.html">Våra leverantörer</a></li>
                     <li><a href="../customers/customers.html">Kunder</a></li>
                     <li><a href="./pages/#">Kontakta oss</a></li>
                     <li><a href="./pages.">Logga in</a></li>
@@ -32,29 +32,21 @@
 
         <div class="p-container">
             <article>
-                <form id="post-form">
+                <form id="order-form">
                     <div class="form-controls">
-                        <label for="name">Leverantörens namn</label>
-                        <input type="text" name="name" id="name" />
+                        <label for="productId">Produkt Id</label>
+                        <input type="number" name="productId" id="productId" />
                     </div>
                     <div class="form-controls">
-                        <label for="address">Adress</label>
-                        <input type="text" name="address" id="address" />
+                        <label for="customerId">Kund Id</label>
+                        <input type="number" name="customerId" id="customerId" />
                     </div>
                     <div class="form-controls">
-                        <label for="contactPerson">Kontaktperson</label>
-                        <input type="text" name="contactPerson" id="contactPerson" />
+                        <label for="quantity">Antal</label>
+                        <input type="number" name="quantity" id="quantity" />
                     </div>
                     <div class="form-controls">
-                        <label for="phone">Nummer</label>
-                        <input type="number" name="phone" id="phone" />
-                    </div>
-                    <div class="form-controls">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" />
-                    </div>
-                    <div class="form-controls">
-                        <button type="submit" class="add-products-button">Lägg till</button>
+                        <button type="submit" class="add-products-button">Lägg order</button>
                     </div>
                 </form>
             </article>

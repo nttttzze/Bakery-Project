@@ -27,9 +27,6 @@ const createHtml = (product) => {
         <p> Antal per paket: ${product.quantityPerPackage}</p>
             <p class="p-price"> Pris: ${product.pricePerKg} Kr/Kg</p>
             <p >Produkt Id: ${product.id}</p>
-
-    
-
     </div>
     
     </section>`;

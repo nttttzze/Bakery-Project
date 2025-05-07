@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./products.js"></script>
-    <link rel="stylesheet" href="products.css">
+    <script type="module" src="./updateProductPrice.js"></script>
+    <link rel="stylesheet" href="updateProductPrice.css">
     <script src="../../lib/helpers/scripts.js"></script>
     <title>Products</title>
 </head>
@@ -17,7 +17,7 @@
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
                 <ul id="nav-links">
-                    <li><a class="active" href="./products.html">Produkter</a></li>
+                    <li><a class="active" href="../products/products.html">Produkter</a></li>
                     <li><a href="../suppliers/suppliers.html">Våra leverantörer</a></li>
                     <li><a href="../customers/customers.html">Kunder</a></li>
                     <li><a href="./pages/#">Kontakta oss</a></li>
@@ -30,27 +30,23 @@
         <div class="p-background"></div>
         <div class="main-page"></div>
 
-        <div id="products" class="grid">
-            <!-- Produkter -->
-        </div>
-        <div class="add-button">
-            <form action="../addProduct/add-product.html">
-
-                <button class="add-product-button" href="">Lägg till en produkt
-                </button>
-            </form>
-            <form action="../placeOrder/order.html">
-
-                <button class="add-product-button" href="">Lägg en order
-                </button>
-            </form>
-            <form action="../updateProductPrice/updateProductPrice.html">
-
-                <button class="add-product-button" href="">Uppdatera pris
-                </button>
-            </form>
+        <div class="p-container">
+            <article>
+                <form id="update-form">
+                    <div class="form-controls">
+                        <label for="productId">Produkt Id</label>
+                        <input type="number" name="productId" id="productId" />
+                    </div>
+                    <div class="form-controls">
+                        <label for="pricePerKg">Nytt pris</label>
+                        <input type="number" name="pricePerKg" id="pricePerKg" />
+                    </div>
+                    <div class="form-controls">
+                        <button type="submit" class="add-products-button">Uppdatera</button>
+                    </div>
+                </form>
+            </article>
         </div>
     </main>
 </body>
-
 </html>
