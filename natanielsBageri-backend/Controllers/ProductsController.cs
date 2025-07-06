@@ -9,9 +9,11 @@ using Microsoft.Extensions.Logging;
 using mormorsBageri.Entitites;
 using mormorsBageri.Entities;
 using mormorsBageri.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace mormorsBageri.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
@@ -25,7 +27,6 @@ public class ProductsController : ControllerBase
     // -----------------------
     // Lägg till felhantering. 
     // -----------------------
-
 
     [HttpGet()] // Visa alla prdoukter.
     public async Task<ActionResult> ListAllProducts()
@@ -49,6 +50,7 @@ public class ProductsController : ControllerBase
         return Ok(new { success = true, products = p });
     }
 
+    [Authorize]
     [HttpPost()] // Lägg till produkt.
     public async Task<ActionResult> AddProduct(ProductPostViewModel model)
     {
@@ -85,6 +87,7 @@ public class ProductsController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPatch("{id}")]
     public async Task<ActionResult> UpdateProductPrice(int id, [FromBody] UpdatePriceDto dto)
     {

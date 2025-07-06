@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,7 @@ public class OrdersController : ControllerBase
         _context = context;
     }
 
+    [Authorize]
     [HttpPost()]
     public async Task<ActionResult> AddOrder(OrderPostViewModel model)
     {

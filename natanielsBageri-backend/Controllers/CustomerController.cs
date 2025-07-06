@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ public class CustomerController : ControllerBase
         _context = context;
     }
 
+    [Authorize]
     [HttpPost()]
     public async Task<ActionResult> AddCustomer(CustomerPostViewModel model)
     {

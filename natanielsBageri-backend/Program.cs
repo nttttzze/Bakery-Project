@@ -1,12 +1,23 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using mormorsBageri;
 using mormorsBageri.Data;
+using mormorsBageri.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<DataContext>(options => {
-    options.UseSqlite("Data Source=supplier.db");
-} );
+builder.Services.AddDbContext<DataContext>(options =>{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DevConnection"));
+});
+
+builder.Services.AddIdentityCore<User>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 8;
+})
+.AddEntityFrameworkStores<DataContext>();
 
 // Hittade detta som en lösning för att kunna göra en post för ny Order.
 // Annars blev det en loop som inte tog slut och då kunde jag inte göra en post.
@@ -34,6 +45,21 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddControllers();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("tokenSettings:tokenKey").Value!))
+        };  
+    });
+
 
 var app = builder.Build();
 
@@ -53,7 +79,13 @@ catch (Exception e)
     throw;
 }
 
+app.UseHsts();
+// app.UseHttpsRedirection();
+
 app.UseCors("AllowAll");
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

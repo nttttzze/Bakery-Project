@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using mormorsBageri.Entitites;
 using mormorsBageri.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace mormorsBageri.Controllers;
 [ApiController]
@@ -48,23 +49,38 @@ public class SupplierController : ControllerBase
 
     }
 
+
+    [Authorize]
     [HttpPost()] // La till denna för att se om den fungerade medan Product POST inte fungerade. DEnna fungerar dock.???
     public async Task<ActionResult> AddSupplier(SupplierPostViewModel model)
     {
-  
-        var supplier = new Supplier
+        try
         {
-            Name = model.Name,
-            Address = model.Address,
-            ContactPerson = model.ContactPerson,
-            Phone = model.Phone,
-            Email = model.Email
-        };
+            var existingSupplier = await _context.Suppliers.FirstOrDefaultAsync(s => s.Name == model.Name) != null;
 
-        await _context.Suppliers.AddAsync(supplier);
-        await _context.SaveChangesAsync();
+            if (existingSupplier)
+            {
+                return Conflict(new { success = false, message = "Leverantören finns redan." });
+            }
 
-        return Ok(new { success = true, data = supplier });
+            var supplier = new Supplier
+            {
+                Name = model.Name,
+                Address = model.Address,
+                ContactPerson = model.ContactPerson,
+                Phone = model.Phone,
+                Email = model.Email
+            };
+
+            await _context.Suppliers.AddAsync(supplier);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true, data = supplier });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { success = false, message = ex.Message });
+        }
     }
 
 
