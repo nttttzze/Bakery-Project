@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./loginPage.css">
+    <script type="module" src="./login.js"></script>
+    <script src="../../lib/helpers/scripts.js"></script>
+    <title>Nataniel Bageri</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"> <a href="../../index.html">Nataniels Bageri</a></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="../products/products.html">Produkter</a></li>
+                    <li><a href="../suppliers/suppliers.html">Våra leverantörer</a></li>
+                    <li><a href="../customers/customers.html">Kunder</a></li>
+                    <li><a href="../contactUs/contact.html">Kontakta oss</a></li>
+                    <li><a class="active" href="./loginPage.html">Logga in</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="background"></div>
+        <div class="main-page">
+
+            <div class="login-container">
+                <article>
+                    <form id="login-form">
+                        <div class="login-c">
+                            <label for="userName">Logga in</label>
+                            <input type="text" placeholder="Username" name="userName" id="userName" required />
+                        </div>
+
+                        <div class="login-c">
+                            <label for="password"></label>
+                            <input type="password" placeholder="Password" name="password" id="password" required />
+                            <input type="checkbox" id="checkbox" class="checkbox" onclick="showPsw()"><label
+                                for="checkbox">Show Password</label>
+                        </div>
+
+
+                        <div class="login-c"> <button type="submit" class="login-button">Login</button> </div>
+                    </form>
+                    <div>
+                        <button class="register-btn"
+                            onclick="location.href = '../register/registerPage.html'">Register</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

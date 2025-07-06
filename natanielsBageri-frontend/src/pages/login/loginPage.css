@@ -1,0 +1,23 @@
+@import '../../assets/css/navigation.css';
+@import '../../assets/css/site.css';
+@import '../../assets/css/login-form.css';
+
+.register-btn {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 90%;
+}
+
+.register-btn:hover {
+    background: none;
+    color: rgb(44, 40, 40);
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 90%;
+    text-decoration: underline;
+}

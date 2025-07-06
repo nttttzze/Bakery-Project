@@ -1,4 +1,5 @@
 import { config } from "./config.js";
+  const user = JSON.parse(sessionStorage.getItem('user'));
 
 export const get = async (endpoint) => {
   const url = `${config.apiUrl}/${endpoint}`;
@@ -22,17 +23,24 @@ export const post = async (endpoint, data) => {
   const url = `${config.apiUrl}/${endpoint}`;
 
   try {
+
     const urlResponse = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        Authorization: 'bearer ' + user.token,
       },
       body: JSON.stringify(data),
     });
 
     if (urlResponse.ok) {
       return await urlResponse.json();
-    } else {
+    }
+    else if (urlResponse.status === 401) {
+      alert("Du är inte inloggad eller saknar behörighet.");
+      location.reload();
+    }
+    else {
       throw new Error(
         `POST misslyckades: ${urlResponse.status}, ${urlResponse.statusText}`
       );
@@ -48,15 +56,19 @@ export const patch = async (endpoint, data) => {
 
   try {
     const urlResponse = await fetch(url, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type' : 'application/json',
+        "Content-Type": "application/json",
+        Authorization: 'bearer ' + user.token,
       },
       body: JSON.stringify(data),
     });
 
     if (urlResponse.ok) {
       return await urlResponse.json();
+    } else if (urlResponse.status === 401) {
+      alert("Du är inte inloggad eller saknar behörighet.");
+      location.reload();
     } else {
       throw new Error(
         `PATCH misslyckades: ${urlResponse.status}, ${urlResponse.statusText}`
@@ -67,5 +79,3 @@ export const patch = async (endpoint, data) => {
     return null;
   }
 };
-
-
