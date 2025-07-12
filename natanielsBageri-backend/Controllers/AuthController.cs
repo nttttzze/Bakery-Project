@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -44,27 +45,28 @@ public class AuthController(UserManager<User> userManager, IConfiguration config
     [HttpPost("register")]
     public async Task<IActionResult> RegisterUser(RegisterUserViewModel model)
     {
+        var sanitizer = new HtmlSanitizer();
         try
         {
             var user = new User
             {
                 UserName = model.UserName,
                 Email = model.UserName,
-                FirstName = model.FirstName,
-                LastName = model.LastName
+                FirstName = sanitizer.Sanitize(model.FirstName),
+                LastName = sanitizer.Sanitize(model.LastName)
             };
             var result = await _userManager.CreateAsync(user, model.Password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return StatusCode(201);
             }
             return BadRequest(new { success = false, message = result.Errors });
 
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            return BadRequest(new { success = false, message = ex.Message});
+            return BadRequest(new { success = false, message = ex.Message });
         }
     }
 

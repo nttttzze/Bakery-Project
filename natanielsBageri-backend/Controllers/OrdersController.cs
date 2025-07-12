@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using mormorsBageri.Entities;
 using mormorsBageri.Entitites;
 
 namespace mormorsBageri.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
@@ -45,8 +47,8 @@ public class OrdersController : ControllerBase
             ProductId = model.ProductId,
             Product = product,
             Quantity = model.Quantity,
-            Price = product.PricePerKg,
-            PriceTotal = product.PricePerKg * model.Quantity
+            Price = (decimal)product.PricePerKg,
+            PriceTotal = (decimal)product.PricePerKg * model.Quantity
         };
 
 

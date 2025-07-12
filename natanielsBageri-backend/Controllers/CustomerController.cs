@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -12,6 +13,7 @@ using mormorsBageri.Entities;
 using mormorsBageri.Entitites;
 
 namespace mormorsBageri.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class CustomerController : ControllerBase
@@ -26,7 +28,7 @@ public class CustomerController : ControllerBase
     [HttpPost()]
     public async Task<ActionResult> AddCustomer(CustomerPostViewModel model)
     {
-
+        var sanitizer = new HtmlSanitizer();
         try
         {
 
@@ -40,11 +42,11 @@ public class CustomerController : ControllerBase
 
             var customer = new Customer
             {
-                Name = model.Name,
+                Name = sanitizer.Sanitize(model.Name),
                 Phone = model.Phone,
-                ContactPerson = model.ContactPerson,
-                DeliveryAddress = model.DeliveryAddress,
-                InvoiceAddress = model.InvoiceAddress
+                ContactPerson = sanitizer.Sanitize(model.ContactPerson),
+                DeliveryAddress = sanitizer.Sanitize(model.DeliveryAddress),
+                InvoiceAddress = sanitizer.Sanitize(model.InvoiceAddress)
             };
 
             await _context.Customers.AddAsync(customer);
@@ -111,12 +113,12 @@ public class CustomerController : ControllerBase
                 }).ToList()
             }).FirstOrDefaultAsync();
 
-            if(c is null)
+            if (c is null)
             {
-                return NotFound( new {success = false, message = "Kunden hittades inte."});
+                return NotFound(new { success = false, message = "Kunden hittades inte." });
             }
 
-            return Ok(new { success = true, c});
+            return Ok(new { success = true, c });
         }
         catch (Exception)
         {

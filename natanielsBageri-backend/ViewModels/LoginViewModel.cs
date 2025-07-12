@@ -5,6 +5,7 @@ namespace mormorsBageri.ViewModels;
 
 public class LoginViewModel
 {
+    [StringLength(50, ErrorMessage = "Max 50 char")]
     [Required(ErrorMessage = "Username is required")]
     public string UserName { get; set; } = "";
 

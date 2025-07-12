@@ -10,6 +10,7 @@ using mormorsBageri.Entitites;
 using mormorsBageri.Entities;
 using mormorsBageri.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using Ganss.Xss;
 
 
 namespace mormorsBageri.Controllers;
@@ -31,7 +32,7 @@ public class ProductsController : ControllerBase
     [HttpGet()] // Visa alla prdoukter.
     public async Task<ActionResult> ListAllProducts()
     {
-
+        var sanitizer = new HtmlSanitizer();
 
         var p = await _context.Products
         .Select(p => new
@@ -54,6 +55,8 @@ public class ProductsController : ControllerBase
     [HttpPost()] // Lägg till produkt.
     public async Task<ActionResult> AddProduct(ProductPostViewModel model)
     {
+
+        var sanitizer = new HtmlSanitizer();
         try
         {
 
@@ -66,14 +69,15 @@ public class ProductsController : ControllerBase
 
             var product = new Product
             {
-                ArticleName = model.ArticleName,
-                BestBeforeDate = model.BestBeforeDate,
-                ExpirationDate = model.ExpirationDate,
+                ArticleName = sanitizer.Sanitize(model.ArticleName),
+                BestBeforeDate = sanitizer.Sanitize(model.BestBeforeDate),
+                ExpirationDate = sanitizer.Sanitize(model.ExpirationDate),
                 PackageAmount = model.PackageAmount,
-                PricePerKg = model.PricePerKg,
+                PricePerKg = (decimal)model.PricePerKg,
                 QuantityPerPackage = model.QuantityPerPackage,
                 Weight = model.Weight
             };
+
 
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();

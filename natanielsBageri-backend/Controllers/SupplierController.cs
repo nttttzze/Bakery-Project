@@ -10,8 +10,10 @@ using mormorsBageri.Entitites;
 using mormorsBageri.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Ganss.Xss;
 
 namespace mormorsBageri.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class SupplierController : ControllerBase
@@ -35,17 +37,20 @@ public class SupplierController : ControllerBase
         .Where(s => s.SupplierId == id)
         .Include(s => s.Supplier)
         .Include(s => s.Product)
-        .Select(s => new{
+        .Select(s => new
+        {
             SupplierName = s.Supplier.Name,
-            Product = s.Supplier.SupplierProducts 
-            .Select(p => new{
+            Product = s.Supplier.SupplierProducts
+            .Select(p => new
+            {
                 ProductId = s.Product.Id,
                 Productname = s.Product.ArticleName,
                 s.Product.PricePerKg
-            })}
+            })
+        }
         ).FirstOrDefaultAsync();
 
-        return Ok(new { success = true, statusCode = 200, sup  });
+        return Ok(new { success = true, statusCode = 200, sup });
 
     }
 
@@ -56,6 +61,7 @@ public class SupplierController : ControllerBase
     {
         try
         {
+            var sanitizer = new HtmlSanitizer();
             var existingSupplier = await _context.Suppliers.FirstOrDefaultAsync(s => s.Name == model.Name) != null;
 
             if (existingSupplier)
@@ -65,11 +71,11 @@ public class SupplierController : ControllerBase
 
             var supplier = new Supplier
             {
-                Name = model.Name,
-                Address = model.Address,
-                ContactPerson = model.ContactPerson,
+                Name = sanitizer.Sanitize(model.Name),
+                Address = sanitizer.Sanitize(model.Address),
+                ContactPerson = sanitizer.Sanitize(model.ContactPerson),
                 Phone = model.Phone,
-                Email = model.Email
+                Email = sanitizer.Sanitize(model.Email)
             };
 
             await _context.Suppliers.AddAsync(supplier);
@@ -89,7 +95,8 @@ public class SupplierController : ControllerBase
     public async Task<ActionResult> ListAllSuppliers()
     {
         var s = await _context.Suppliers
-        .Select(s => new{
+        .Select(s => new
+        {
             s.Id,
             s.Name,
             s.Address,
@@ -98,9 +105,9 @@ public class SupplierController : ControllerBase
         }
         )
         .ToListAsync();
-        return Ok(new{ success = true, s});
+        return Ok(new { success = true, s });
     }
 
-    
+
 
 }
